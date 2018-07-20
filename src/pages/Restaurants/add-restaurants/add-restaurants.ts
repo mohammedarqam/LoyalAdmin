@@ -42,8 +42,6 @@ export class AddRestaurantsPage {
       firebase.database().ref("Admins/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
         this.adminEmail = itemSnap.val().Email;
         this.adminPass=itemSnap.val().Password;
-        console.log(this.adminEmail);
-        console.log(this.adminPass);
       })
       }else{
         this.navCtrl.setRoot("LoginPage");
@@ -112,7 +110,6 @@ export class AddRestaurantsPage {
           TotalORders : 0
         }).then((result)=>{
           this.key = result.key
-          console.log(result.key);
           //Adding Admin Reference to the Restaurant
           firebase.database().ref("Restaurants/"+this.key).child("/Admins").push({
             Uid : uid
