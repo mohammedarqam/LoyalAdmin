@@ -9,7 +9,7 @@ import * as firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "LoginPage";
+  rootPage: any = "ViewRestaurantsPage";
   activePage: any;
 
 
@@ -20,10 +20,12 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', component: HomePage, icon: "home" },
+      { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "home" },
+      { title: 'Menus', component: "ViewMenusPage", icon: "home" },
 
 
     ];
-    this.activePage = this.pages[0];
+    this.activePage = this.pages[1];
 
   }
 

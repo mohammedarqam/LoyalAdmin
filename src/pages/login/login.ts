@@ -24,7 +24,6 @@ export class LoginPage {
       if (user) {
       firebase.database().ref("Admins").once('value',itemSnapshot=>{
         itemSnapshot.forEach(itemSnap => {
-          console.log(itemSnap);
           if(itemSnap.key ==firebase.auth().currentUser.uid){
           this.navCtrl.setRoot("HomePage");
         }
@@ -51,7 +50,6 @@ export class LoginPage {
     }).then(() => {
       firebase.database().ref("Admins").once('value',itemSnapshot=>{
         itemSnapshot.forEach(itemSnap => {
-          console.log(itemSnap);
           if(itemSnap.key ==firebase.auth().currentUser.uid){
           this.navCtrl.setRoot("HomePage");
         }else{
