@@ -1,7 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
-
-import { HomePage } from '../pages/home/home';
 import * as firebase from 'firebase';
 @Component({
   templateUrl: 'app.html'
@@ -9,7 +7,7 @@ import * as firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "ViewRestaurantsPage";
+  rootPage: any = "ViewMenusPage";
   activePage: any;
 
 
@@ -19,7 +17,7 @@ export class MyApp {
     this.initializeApp();
 
     this.pages = [
-      { title: 'Home', component: HomePage, icon: "home" },
+      { title: 'Home', component: "HomePage", icon: "home" },
       { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "home" },
       { title: 'Menus', component: "ViewMenusPage", icon: "home" },
 
