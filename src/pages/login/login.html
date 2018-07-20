@@ -6,7 +6,7 @@
       <ion-slide>
         <ion-card>
           <ion-card-content>
-            <h1 class="signinTitle">Sign In to <!--App Name--> Admin</h1>
+            <h1 class="signinTitle">Sign In to Loyal Admin</h1>
   
             <ion-item>
               <ion-label color="whiter" fixed>Email</ion-label>
@@ -17,7 +17,7 @@
               <ion-input type="password" placeholder="admin" [(ngModel)]="lpass"></ion-input>
             </ion-item>
   
-            <button ion-button block color="primary" [disabled]="!lemail||!lpass" (click)="gtHome()">Login</button>
+            <button ion-button block color="primary" [disabled]="!lemail||!lpass" (click)="login()">Login</button>
           </ion-card-content>
   
   

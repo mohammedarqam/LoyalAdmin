@@ -42,13 +42,11 @@ export class MyApp {
   }
 
   signOut() {
-/*    firebase.auth().signOut().then(() => {
-      this.nav.setRoot(MainLoginPage);
+    firebase.auth().signOut().then(() => {
+      this.nav.setRoot("LoginPage");
     }).catch((error) => {
       console.log(error.message);
     });
-  */
- this.nav.setRoot("LoginPage");
  
 }
 
