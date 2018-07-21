@@ -2,4 +2,9 @@ page-view-menus {
     .itemCol{
         border-left: 1px map-get($colors ,dark) solid;
     }
+
+    .restCards{
+        cursor: pointer;
+    }
+
 }

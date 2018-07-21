@@ -7,7 +7,7 @@ import * as firebase from 'firebase';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = "ViewMenusPage";
+  rootPage: any = "UsersPage";
   activePage: any;
 
 
@@ -18,12 +18,14 @@ export class MyApp {
 
     this.pages = [
       { title: 'Home', component: "HomePage", icon: "home" },
-      { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "home" },
-      { title: 'Menus', component: "ViewMenusPage", icon: "home" },
+      { title: 'Restaurants', component: "ViewRestaurantsPage", icon: "md-pizza" },
+      { title: 'Menus', component: "ViewMenusPage", icon: "md-paper" },
+      { title: 'Users', component: "UsersPage", icon: "ios-people" },
+      { title: 'Notifications', component: "NotificationTabsPage", icon: "ios-mail" },
 
 
     ];
-    this.activePage = this.pages[1];
+    this.activePage = this.pages[3];
 
   }
 

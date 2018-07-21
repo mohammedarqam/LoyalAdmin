@@ -107,7 +107,8 @@ export class AddRestaurantsPage {
           ProfitToLoyalPercentage : this.ProfitToLoyalPercentage,
           CreditDue : 0,
           AmountPendingToLoyal : 0,
-          TotalORders : 0
+          TotalORders : 0,
+          Password : this.Password
         }).then((result)=>{
           this.key = result.key
           //Adding Admin Reference to the Restaurant

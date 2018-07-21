@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  <ion-item no-lines class="content">
+  <h1 class="title">Users</h1>
+  </ion-item>
+
+  <ion-searchbar animated="true" placeholder="Search a User ..." [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+  
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-4 *ngFor="let user of users" >
+        <ion-avatar>
+        </ion-avatar>
+    <ion-card>
+      <ion-card-content>
+        <div class="imgContainer">
+          <img [src]="user.ProPic" class="propic" />
+        </div>
+        <ion-card-title>
+          {{user.Name}}
+        </ion-card-title>
+        <ion-item>
+          <p item-start ion-text color="primary" >Email</p>
+          <p item-end>{{user.Email}} </p>
+        </ion-item>
+        <ion-item>
+          <p item-start ion-text color="primary" >Phone</p>
+          <p item-end>{{user.Phone}} </p>
+        </ion-item>
+          <button ion-button (click)="viewCart(user.key)" >View Cart</button>
+          <button ion-button (click)="viewRestaurants(user.key)" >Restaurants</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+        </ion-row>
+</ion-grid>
+
+</ion-content>

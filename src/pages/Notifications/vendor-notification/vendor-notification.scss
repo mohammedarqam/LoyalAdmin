@@ -1,0 +1,16 @@
+page-vendor-notification {
+    ion-input {
+        border-bottom: 1px solid map-get($colors, primary);
+    }
+    ion-textarea {
+        border-bottom: 1px solid map-get($colors, primary);
+    }
+ion-navbar{
+    ion-col{
+        color: white;
+    }
+}
+ion-col{
+    text-transform: capitalize;
+}
+}

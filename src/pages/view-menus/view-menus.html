@@ -15,7 +15,7 @@
 <ion-grid>
   <ion-row>
     <ion-col col-8>
-      <ion-card *ngFor="let restaurant of restaurants" (click)="addToItems(restaurant.key)" >
+      <ion-card *ngFor="let restaurant of restaurants" (click)="addToItems(restaurant.key)" class="restCards" >
         <ion-card-content>
           <ion-card-title color="primary" >
             {{restaurant.RestaurantName}}
@@ -31,6 +31,9 @@
         <ion-title>
           Items
         </ion-title>
+        <ion-buttons end>
+            <button ion-button >{{totalItems}}</button>
+          </ion-buttons>
       </ion-navbar>
       <ion-card *ngIf="!menuItems.length" >
         <ion-card-content>

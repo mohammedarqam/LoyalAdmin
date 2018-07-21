@@ -1,0 +1,89 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  <ion-item no-lines class="content">
+  <h1 class="title" item-start >Vendor Notifications</h1>
+  <button ion-button item-end *ngIf="!addView" (click)="showForm()">Add Notification</button>
+  <button ion-button item-end *ngIf="addView" (click)="hideForm()">Cancel</button>
+  </ion-item>
+  
+<ion-card *ngIf="addView" >
+  <ion-card-content>
+
+  <ion-item  >
+      <ion-label floating>Enter the Notification</ion-label>
+      <ion-input type="text" [(ngModel)]="Notification" ></ion-input>
+    </ion-item>
+    <ion-item  >
+        <ion-label floating>Enter the Notification</ion-label>
+        <ion-textarea type="text" [(ngModel)]="NotificationDescription" ></ion-textarea>
+      </ion-item>
+    <ion-item  >
+      <ion-label>Select Restaurants</ion-label>
+      <ion-select [(ngModel)]="restaurantsS" multiple="true" >
+        <ion-option [value]="rest.key" *ngFor="let rest of restaurants">{{rest.RestaurantName}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item  >
+      <ion-label>Select All</ion-label>
+      <ion-checkbox item-start (ionChange)="selectAll(sall)" [(ngModel)]="sall"></ion-checkbox>
+      <button *ngIf="restaurantsS.length" ion-button item-end (click)="clearAll()" clear>Clear</button>
+    </ion-item>
+  <button ion-button [disabled]="!Notification||!NotificationDescription||!restaurantsS"  color="danger" (click)="sendNoti()">Send</button>
+  </ion-card-content>
+</ion-card>
+  
+  
+  <ion-grid>
+      <ion-navbar color="primary" >
+        <ion-row>
+      <ion-col col-3>
+      <ion-title>Title</ion-title>
+      </ion-col>
+      <ion-col col-4>
+        <ion-title>Description</ion-title>
+      </ion-col>
+      <ion-col col-2>
+      <ion-title>Time Stamp</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-title>Sent To</ion-title>
+      </ion-col>      
+      </ion-row>
+  </ion-navbar>
+  
+  </ion-grid>
+  
+  <ion-card *ngFor="let noti of  sentNotifications" >
+    <ion-grid>
+      <ion-row>
+        <ion-col col-3>
+          {{noti.Notification}}
+        </ion-col>
+        <ion-col col-4>
+          {{noti.NotificationDescription}}
+        </ion-col>
+        <ion-col col-3>
+          {{noti.TimeStamp}}
+        </ion-col>
+        <ion-col col-2>
+          <button ion-button (click)="viewRestaurants(noti.SentTo)">View Restaurants</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+  
+  
+  
+  
+  
+  
+  </ion-content>
+  

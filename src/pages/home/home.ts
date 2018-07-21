@@ -28,6 +28,9 @@ export class HomePage {
     this.restaurantsRef.once('value',itemSnapshot=>{
       this.totRestaurants = itemSnapshot.numChildren();
     });
+    this.userRef.once('value',itemSnapshot=>{
+      this.totUsers = itemSnapshot.numChildren();
+    });
 
   }
 

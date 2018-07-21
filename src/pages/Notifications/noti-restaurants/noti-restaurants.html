@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-navbar color="primary">
+      <ion-buttons end>
+        <button ion-button (click)="done()">Done</button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+  <ion-item no-lines class="content">
+  <h1 class="title"> Restaurants</h1>
+  </ion-item>
+
+<ion-card *ngFor="let name of restNames" >
+  <ion-card-content>
+    <ion-card-title>
+      {{name}}
+    </ion-card-title> 
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

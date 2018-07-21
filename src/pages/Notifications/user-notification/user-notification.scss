@@ -1,0 +1,24 @@
+page-user-notification {
+    ion-input {
+        border-bottom: 1px solid map-get($colors, primary);
+    }
+    ion-textarea {
+        border-bottom: 1px solid map-get($colors, primary);
+    }
+    ion-row{
+        ion-item{
+            ion-label{
+                font-weight: 500;
+            }
+        }
+    }
+ion-navbar{
+    ion-col{
+        color: white;
+        font-size: 100%;
+    }
+}
+ion-col{
+    text-transform: capitalize;
+}
+}
