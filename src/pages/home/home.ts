@@ -17,6 +17,10 @@ export class HomePage {
   restaurantsRef = firebase.database().ref("Restaurants/");
   totRestaurants: number = 0;
 
+  mainDataRef= firebase.database().ref("LoyalDataMain/");
+  totalCredit : number = 0;
+  totalCollection : number = 0;
+
   constructor(
   public navCtrl: NavController,
   public toastCtrl : ToastController,
@@ -31,6 +35,13 @@ export class HomePage {
     this.userRef.once('value',itemSnapshot=>{
       this.totUsers = itemSnapshot.numChildren();
     });
+    
+    this.mainDataRef.once('value',itemSnapshot=>{
+      this.totalCollection = itemSnapshot.val().TotalCollectionFromVendors;
+      this.totalCredit = itemSnapshot.val().TotalCreditToCustomers;
+    })
+
+
 
   }
 

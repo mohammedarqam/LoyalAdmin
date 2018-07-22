@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button (click)="done()">Done</button>
+    </ion-buttons>
+</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item no-lines class="content">
+    <h1 class="title">Restaurant Detail</h1>
+    </ion-item>
+
+<ion-card>
+  <ion-card-content>
+    <ion-card-title>
+      {{rest.RestaurantName}}
+    </ion-card-title>
+    <ion-item>
+      <p item-start ion-text color="primary" >Address</p>
+      <p item-end>{{rest.Address}} </p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary" >Credit Spend</p>
+      <p item-end>{{rest.CreditDue}} </p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary" >Amount Pending to Loyal</p>
+      <p item-end>{{rest.AmountPendingToLoyal}} </p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary">Description</p>
+      <p item-end>{{rest.Description}} </p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary" >Loyal Percentage</p>
+      <p item-end>{{rest.ProfitToLoyalPercentage}} %</p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary" >Total Orders</p>
+      <p item-end>{{rest.TotalOrders}}</p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary">Contact Person</p>
+      <p item-end>{{rest.Name}}</p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary">Email</p>
+      <p item-end>{{rest.Email}}</p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary">Password</p>
+      <p item-end>{{rest.Password}}</p>
+    </ion-item>
+    <ion-item>
+      <p item-start ion-text color="primary">Contact No.</p>
+      <p item-end>{{rest.PhoneNo}}</p>
+    </ion-item>
+
+  </ion-card-content>
+</ion-card>
+
+</ion-content>

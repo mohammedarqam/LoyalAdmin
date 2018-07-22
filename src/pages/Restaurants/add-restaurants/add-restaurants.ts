@@ -99,7 +99,7 @@ export class AddRestaurantsPage {
     }).then(()=>{
       //Adding Restaurant
       var uid = firebase.auth().currentUser.uid;
-        firebase.database().ref("Restaurants/").push({
+        firebase.database().ref("Restaurants/").child(firebase.auth().currentUser.uid).set({
           RestaurantName : this.Name,
           Address : this.Address,
           Description : this.Description,
@@ -107,22 +107,12 @@ export class AddRestaurantsPage {
           ProfitToLoyalPercentage : this.ProfitToLoyalPercentage,
           CreditDue : 0,
           AmountPendingToLoyal : 0,
-          TotalORders : 0,
-          Password : this.Password
-        }).then((result)=>{
-          this.key = result.key
-          //Adding Admin Reference to the Restaurant
-          firebase.database().ref("Restaurants/"+this.key).child("/Admins").push({
-            Uid : uid
-          }).then(()=>{
-            //Adding Admins Data with Restaurant Referance
-            firebase.database().ref("Restaurants Admins/").child(uid).set({
-              Name : this.ContactPerson,
-              PhoneNo : this.PhoneNo,
-              Email : this.Email,
-              Password : this.Password,
-              AssociatedRestaurant : this.key
-            }).then(()=>{
+          TotalOrders : 0,
+          Name : this.ContactPerson,
+          PhoneNo : this.PhoneNo,
+          Email : this.Email,
+          Password : this.Password,
+    }).then(()=>{
               //Signing Restaurant Admin Out
               firebase.auth().signOut().then(()=>{
                 // Signing Back in as the Admin
@@ -137,8 +127,6 @@ export class AddRestaurantsPage {
               })
             })
         })
-      })
-    })
 
 
   }

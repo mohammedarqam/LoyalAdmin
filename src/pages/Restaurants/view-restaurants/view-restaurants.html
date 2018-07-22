@@ -13,6 +13,26 @@
     <ion-searchbar animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
 
 
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 *ngFor="let rest of restaurants" (click)="gtDetails(rest)" >
+          <ion-card>
+            <ion-card-content>
+              <ion-card-title>
+                {{rest.RestaurantName}}
+              </ion-card-title>
+              <p>Credit Due : {{rest.CreditDue}}</p>
+              <p>Orders : {{rest.TotalOrders}} </p>
+              <p>Loyal Percentage : {{rest.ProfitToLoyalPercentage}} </p>
+              <p>Amount to Loyal : {{rest.AmountPendingToLoyal}} </p>
+              <button ion-button (click)="DueCollection()">Collection</button>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
 
 
   <ion-fab right bottom>
