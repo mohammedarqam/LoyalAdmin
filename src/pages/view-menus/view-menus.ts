@@ -15,7 +15,6 @@ export class ViewMenusPage {
   restaurants : Array<any> =[];
   menuRef = firebase.database().ref("Menus");
   menuItems : Array<any>=[];
-  totalItems : number;
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams) {
@@ -32,16 +31,12 @@ export class ViewMenusPage {
   }
 
   addToItems(resKey){
-
-    console.log(resKey);
       this.menuRef.child(resKey).once('value',itemSnapshot=>{
       this.menuItems = [];
       itemSnapshot.forEach(itemSnap =>{
         var temp = itemSnap.val();
         temp.key = itemSnap.key;
         this.menuItems.push(temp);
-        this.totalItems = this.menuItems.length;
-        console.log(itemSnap.val());
         return false;
       });
     });

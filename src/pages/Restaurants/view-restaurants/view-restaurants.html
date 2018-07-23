@@ -15,17 +15,30 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col col-4 *ngFor="let rest of restaurants" (click)="gtDetails(rest)" >
+        <ion-col col-4 *ngFor="let rest of restaurants">
           <ion-card>
             <ion-card-content>
               <ion-card-title>
                 {{rest.RestaurantName}}
               </ion-card-title>
-              <p>Credit Due : {{rest.CreditDue}}</p>
-              <p>Orders : {{rest.TotalOrders}} </p>
-              <p>Loyal Percentage : {{rest.ProfitToLoyalPercentage}} </p>
-              <p>Amount to Loyal : {{rest.AmountPendingToLoyal}} </p>
-              <button ion-button (click)="DueCollection()">Collection</button>
+              <ion-item>
+                <p item-start ion-text color="primary" >Credit Due</p>
+                <p item-end ion-text color="danger">{{rest.CreditDue}} </p>
+              </ion-item>
+              <ion-item>
+                <p item-start ion-text color="primary" >Total Orders</p>
+                <p item-end>{{rest.TotalOrders}} </p>
+              </ion-item>
+              <ion-item>
+                <p item-start ion-text color="primary" >Profit To Loyal Percentage</p>
+                <p item-end>{{rest.ProfitToLoyalPercentage}} </p>
+              </ion-item>
+              <ion-item>
+                <p item-start ion-text color="primary" >Amount Pending To Loyal</p>
+                <p item-end ion-text color="secondary">{{rest.AmountPendingToLoyal}} </p>
+              </ion-item>
+              <button ion-button (click)="gtDetails(rest)">Details</button>
+              <button ion-button (click)="DueCollectionShow(rest)">Collection</button>
             </ion-card-content>
           </ion-card>
         </ion-col>

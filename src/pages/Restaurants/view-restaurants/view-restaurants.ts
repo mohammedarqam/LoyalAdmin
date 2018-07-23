@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 
 
@@ -18,6 +18,8 @@ export class ViewRestaurantsPage {
   constructor(
   public navCtrl: NavController, 
   public modalCtrl : ModalController,
+  public toastCtrl : ToastController,
+  public alertCtrl : AlertController,
   public navParams: NavParams) {
     this.getRestaurants();
   }
@@ -60,6 +62,60 @@ getItems(searchbar) {
 gtDetails(rest){
   let profileModal = this.modalCtrl.create("RestaurantDetailsPage", { rest: rest });
   profileModal.present();
+}
+
+
+DueCollectionShow(){
+    let alert = this.alertCtrl.create({
+      title: 'Transaction',
+      inputs: [
+        {
+          name: 'Creditpaid',
+          placeholder: 'Credit Paid',
+          type :'number'
+        },
+        {
+          name: 'AmountCollected',
+          placeholder: 'Amount Collected',
+          type: 'number'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Add Item',
+          handler: data => {
+            if (data.CreditPaid||data.AmountCollected) {
+              this.DueCollection(data.Creditpaid,data.AmountCollected)              
+            } else {
+              this.presentToast("Cancelled");
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
+
+}
+
+DueCollection(Creditpaid,AmountCollected){
+
+}
+
+
+presentToast(msg) {
+  let toast = this.toastCtrl.create({
+    message: msg,
+    duration: 4000,
+    showCloseButton: false,
+  });
+  toast.present();
 }
 
 }

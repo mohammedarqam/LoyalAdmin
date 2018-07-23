@@ -35,6 +35,14 @@
           <p item-start ion-text color="primary" >Phone</p>
           <p item-end>{{user.Phone}} </p>
         </ion-item>
+        <ion-item>
+          <p item-start ion-text color="primary" >Credit Limit</p>
+          <p item-end>{{user.CreditLimit}} </p>
+        </ion-item>
+        <ion-item>
+          <p item-start ion-text color="primary" >Credit Used</p>
+          <p item-end>{{user.CreditUsed}} </p>
+        </ion-item>
           <button ion-button (click)="viewCart(user.key)" >View Cart</button>
           <button ion-button (click)="viewRestaurants(user.key)" >Restaurants</button>
       </ion-card-content>

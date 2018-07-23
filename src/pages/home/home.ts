@@ -20,7 +20,8 @@ export class HomePage {
   mainDataRef= firebase.database().ref("LoyalDataMain/");
   totalCredit : number = 0;
   totalCollection : number = 0;
-
+  totalOrders : number = 0;
+  restName : string;
   constructor(
   public navCtrl: NavController,
   public toastCtrl : ToastController,

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item no-lines class="content">
+<h1 class="title">Concerns</h1>
+</ion-item>
+
+<ion-navbar color="primary">
+  <ion-title>Pending Concerns</ion-title>
+</ion-navbar>
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-4 *ngFor="let concern of pendingConcerns" >
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            {{concern.RestaurantName}}
+          </ion-card-title>
+          <ion-item>
+            <p item-start ion-text color="primary" >Concern</p>
+            <p item-end>{{concern.Concern}} </p>
+          </ion-item>
+          <ion-item>
+            <p item-start ion-text color="primary" >Description</p>
+            <p item-end>{{concern.Description}} </p>
+          </ion-item>
+          <ion-item>
+            <p item-start ion-text color="primary">Response</p>
+            <p item-end>{{concern.Response}} </p>
+          </ion-item>
+          <button ion-button (click)="respondOpen(concern)">Respond</button>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-navbar color="primary">
+  <ion-title>Attended Concerns</ion-title>
+</ion-navbar>
+
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-4 *ngFor="let concern of attendedConcerns" >
+      <ion-card>
+        <ion-card-content>
+          <ion-card-title>
+            {{concern.RestaurantName}}
+          </ion-card-title>
+          <ion-item>
+            <p item-start ion-text color="primary" >Concern</p>
+            <p item-end>{{concern.Concern}} </p>
+          </ion-item>
+          <ion-item>
+            <p item-start ion-text color="primary" >Description</p>
+            <p item-end>{{concern.Description}} </p>
+          </ion-item>
+          <ion-item>
+            <p item-start ion-text color="primary">Response</p>
+            <p item-end>{{concern.Response}} </p>
+          </ion-item>
+      
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+</ion-content>

@@ -20,30 +20,27 @@ export class UserViewRestaurantsPage {
   public loadingCtrl : LoadingController,
   public navParams: NavParams) {
     this.getRestaurants();
+    // this.sad();
   }
 
+
+sad(){
+  console.log(this.userKey);
+}
+
+
   getRestaurants(){
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-    loading.present();
 
     firebase.database().ref("Users/"+this.userKey+"/Restaurants/").once('value',itemSnapshot=>{
       this.restaurants = [];
       itemSnapshot.forEach(itemSnap=>{
-        firebase.database().ref("Restaurants").child(itemSnap.key).once('value',sitem=>{
-
         var temp = itemSnap.val();
-        temp.Name = sitem.val().RestaurantName;
         temp.key = itemSnap.key;
         this.restaurants.push(temp);
+        console.log(this.restaurants);
         return false;
-      }).then(()=>{
-        loading.dismiss();
-      }) ;
+      });
     });
-  
-  });
   }
 
 
