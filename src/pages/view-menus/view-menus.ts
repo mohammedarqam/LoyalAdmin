@@ -41,5 +41,7 @@ export class ViewMenusPage {
       });
     });
   }
-
+clear(){
+  this.menuItems = [];
+}
 }

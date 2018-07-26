@@ -70,7 +70,7 @@
           {{noti.NotificationDescription}}
         </ion-col>
         <ion-col col-3>
-          {{noti.TimeStamp}}
+          {{noti.TimeStamp | date }}
         </ion-col>
         <ion-col col-2>
           <button ion-button (click)="viewRestaurants(noti.SentTo)">View Restaurants</button>

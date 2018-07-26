@@ -1,18 +1,94 @@
-<!--
-  Generated template for the EditRestaurantsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>EditRestaurants</ion-title>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{restaurant.RestaurantName}} </ion-title>
+    <ion-buttons end>
+      <button ion-button outline (click)="cancel()">Cancel</button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
 
 
+
 <ion-content padding>
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <button item-end ion-button *ngIf="Name" color="danger" (click)="ClearI()" class="clearBtn()" >Clear</button>
+      </ion-item>
+    <ion-grid>
+  
+      <ion-row>
+      <ion-item>
+        <ion-label stacked color="primary" >
+          <p ion-text color="danger" >*</p>
+          Restaurant Name
+          </ion-label>
+        <ion-input type="text"  (ionChange)="capsName(Name)" autofocus [(ngModel)]="restaurant.RestaurantName"></ion-input>
+      </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+        <ion-label stacked color="primary">
+            <p ion-text color="danger" >*</p>
+            Contact Person Name</ion-label>
+        <ion-input type="text" (ionChange)="capsContactPerson(ContactPerson)" [(ngModel)]="restaurant.Name"></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row>
+       <ion-item>
+            <ion-label stacked color="primary">
+                <p ion-text color="danger" >*</p>
+                Mobile Contact</ion-label>
+            <ion-input type="number"  [(ngModel)]="restaurant.PhoneNo"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+             <ion-label stacked color="primary">
+                 <p ion-text color="danger" >*</p>
+                 Address</ion-label>
+             <ion-input type="text"  [(ngModel)]="restaurant.Address"></ion-input>
+         </ion-item>
+       </ion-row>
+       <ion-row>
+        <ion-item>
+             <ion-label stacked color="primary">
+                 <p ion-text color="danger" >*</p>
+                 Email</ion-label>
+             <ion-input type="email" placeholder="This Email will be used to Log In" [(ngModel)]="restaurant.Email"></ion-input>
+         </ion-item>
+       </ion-row>
+       <ion-row>
+        <ion-col >
+          <ion-label stacked >Profit to Loyal</ion-label>
+        <ion-item>
+          <ion-checkbox [(ngModel)]="restaurant.LoyalProfit"></ion-checkbox>
+        </ion-item>
+        </ion-col>
+        <ion-col  *ngIf="restaurant.LoyalProfit" >
+        <ion-item>
+          <ion-label stacked >Percentage</ion-label>
+          <ion-input type="number" [(ngModel)]="restaurant.ProfitToLoyalPercentage" ></ion-input>
+        </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-item>
+          <ion-label stacked color="primary">Description</ion-label>
+          <ion-textarea [(ngModel)]="restaurant.Description"></ion-textarea>
+        </ion-item>
+      </ion-row>
+
+       <ion-row>
+        <button ion-button color="primary" [disabled]="!Name||!PhoneNo||!Address||!Email||!ContactPerson" block (click)="addConfirm()" >Add Restaurant</button>
+      </ion-row>
+    
+      
+    </ion-grid>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

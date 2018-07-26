@@ -7,21 +7,32 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4 >
   <ion-item no-lines class="content">
-    <h1 class="title">Restaurants</h1>
-    </ion-item>
-    <ion-searchbar animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
-
-
+  <h1 class="title" item-start>Restaurants</h1>
+  </ion-item>
+  </ion-col>
+  <ion-col col-6 push-2 >
+  <ion-searchbar item-end animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+  </ion-col>
+  </ion-row>
+  </ion-grid>
+  
+  <div *ngIf="restaurants.length">
     <ion-grid>
       <ion-row>
         <ion-col col-4 *ngFor="let rest of restaurants">
           <ion-card>
             <ion-card-content>
-              <ion-card-title>
-                {{rest.RestaurantName}}
-              </ion-card-title>
               <ion-item>
+              <ion-card-title item-start >{{rest.RestaurantName}}</ion-card-title>
+              <button ion-button item-end color="primary" icon-only clear (click)="editRes(rest)" >
+                <ion-icon name="create"  ></ion-icon>
+                </button>
+              </ion-item>
+                <ion-item>
                 <p item-start ion-text color="primary" >Credit Due</p>
                 <p item-end ion-text color="danger">{{rest.CreditDue}} </p>
               </ion-item>
@@ -44,7 +55,12 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+  </div>
 
+<div *ngIf="!restaurants.length" class="noDataDiv" >
+  <img src="assets/imgs/nData.png"/>
+  <h2>No Restaurants</h2>
+</div>
 
 
 

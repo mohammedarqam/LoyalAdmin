@@ -7,9 +7,74 @@
 </ion-header>
 
 <ion-content padding>
+<ion-grid>
+  <ion-row>
+    <ion-col col-4 >
 <ion-item no-lines class="content">
-<h1 class="title">Collection log</h1>
+<h1 class="title" item-start>Collection log</h1>
 </ion-item>
+</ion-col>
+<ion-col col-6 push-2 >
+<ion-searchbar item-end animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+</ion-col>
+</ion-row>
+</ion-grid>
 
+<ion-navbar color="primary" >
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2 >
+          Restaurant Name
+        </ion-col>
+        <ion-col col-2 >
+          Credit Due
+        </ion-col>
+        <ion-col col-2 >
+          Credit Paid
+        </ion-col>
+        <ion-col col-2 >
+          Amount Pending
+        </ion-col>
+        <ion-col col-2 >
+          Amount Collected
+        </ion-col>
+        <ion-col col-2 >
+          Time
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-navbar>
 
+<div *ngIf="logs.length">
+<ion-card *ngFor="let log of logs"  >
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-2 >
+          {{log.RestaurantName}}
+        </ion-col>
+        <ion-col col-2 >
+          {{log.CreditDue}}
+        </ion-col>
+        <ion-col col-2 >
+          {{log.CreditPaid}}
+        </ion-col>
+        <ion-col col-2 >
+          {{log.AmountDue}}
+        </ion-col>
+        <ion-col col-2 >
+          {{log.AmountCollected}}
+        </ion-col>
+        <ion-col col-2 >
+          {{log.Time | date }}
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+</div>
+<div *ngIf="!logs.length" class="noDataDiv" >
+  <img src="assets/imgs/nData.png"/>
+  <h2>No Data</h2>
+</div>
 </ion-content>

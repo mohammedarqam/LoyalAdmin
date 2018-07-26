@@ -15,7 +15,11 @@
 <ion-grid>
   <ion-row>
     <ion-col col-8>
-      <ion-card *ngFor="let restaurant of restaurants" (click)="addToItems(restaurant.key)" class="restCards" >
+      <ion-item class="content" >
+        <button ion-button clear item-end (click)="clear()">Clear</button>
+      </ion-item>
+      <div *ngIf="restaurants.length">
+          <ion-card *ngFor="let restaurant of restaurants" (click)="addToItems(restaurant.key)" class="restCards" >
         <ion-card-content>
           <ion-card-title color="primary" >
             {{restaurant.RestaurantName}}
@@ -24,6 +28,12 @@
           
         </ion-card-content>
       </ion-card>
+      </div>
+<div *ngIf="!restaurants.length" class="noDataDiv" >
+  <img src="assets/imgs/nData.png"/>
+  <h2>No Restaurants</h2>
+</div>
+
     </ion-col>
 
     <ion-col col-4 class="itemCol" >
@@ -35,13 +45,10 @@
             <button ion-button >{{menuItems.length}}</button>
           </ion-buttons>
       </ion-navbar>
-      <ion-card *ngIf="!menuItems.length" >
-        <ion-card-content>
-          <ion-card-title>
-            No items
-          </ion-card-title>
-        </ion-card-content>
-      </ion-card>
+<div *ngIf="!menuItems.length" class="noDataDiv" >
+  <img src="assets/imgs/nData.png"/>
+  <h2>No Items</h2>
+</div>
       <ion-card *ngFor="let menuItem of menuItems">
         <ion-card-content>
           <ion-card-title>

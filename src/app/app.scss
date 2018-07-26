@@ -47,4 +47,13 @@ ion-menu ::-webkit-scrollbar {
     font-family: Roboto,sans-serif;
     text-transform: uppercase;
   }
-  
+  .noDataDiv{
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: map-get($colors,primary);
+
+}
