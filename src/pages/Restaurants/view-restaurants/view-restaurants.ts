@@ -60,8 +60,9 @@ getItems(searchbar) {
 }
 
 gtDetails(rest){
-  let profileModal = this.modalCtrl.create("RestaurantDetailsPage", { rest: rest });
-  profileModal.present();
+   let profileModal = this.modalCtrl.create("RestaurantDetailsPage", { rest: rest });
+   profileModal.present();
+  // this.navCtrl.setRoot("RestaurantDetailsPage",{rest:rest});
 }
 
 
