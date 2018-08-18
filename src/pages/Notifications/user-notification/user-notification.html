@@ -56,7 +56,8 @@
         {{noti.NotificationDescription}}
       </ion-col>
       <ion-col col-2>
-        {{noti.TimeStamp | date }}
+        <p>{{noti.TimeStamp | date:'d MMM yyyy' }}</p>
+        <p>{{noti.TimeStamp | date:'hh : mm : ss  aa' }}</p>
       </ion-col>
     </ion-row>
   </ion-grid>

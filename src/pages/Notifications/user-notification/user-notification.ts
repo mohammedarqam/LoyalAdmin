@@ -28,12 +28,13 @@ export class UserNotificationPage {
   }
 
   getNotifications(){
-    this.userNotiRef.once('value',itemSnapshot=>{
+    this.userNotiRef.orderByChild("TimeStamp").once('value',itemSnapshot=>{
       this.userNotifications=[];
       itemSnapshot.forEach(itemSnap =>{
         var temp = itemSnap.val();
         temp.key = itemSnap.key;
         this.userNotifications.push(temp);
+        this.userNotifications.reverse();
         return false;
       });
     });
@@ -43,7 +44,7 @@ sendUserNotification(){
     this.userNotiRef.push({
       Notification : this.Notification,
       NotificationDescription : this.NotificationDescription,
-      TimeStamp : moment().format()
+      TimeStamp : firebase.database.ServerValue.TIMESTAMP
     }).then(()=>{
       this.getNotifications();
       this.Notification = null;
@@ -68,6 +69,8 @@ showForm(){
 }
 hideForm(){
   this.addView = false;
+  this.Notification =null;
+  this.NotificationDescription =null;
 }
 
 }

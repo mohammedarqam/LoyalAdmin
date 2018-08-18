@@ -14,6 +14,7 @@ export class EditRestaurantsPage {
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams) {
+    console.log(this.restaurant)
   }
 
 
@@ -22,4 +23,10 @@ export class EditRestaurantsPage {
   cancel(){
     this.navCtrl.pop();
   }
+  // capsName(Name){
+  //   this.Name = Name.toUpperCase();
+  // }
+  // capsContactPerson(ContactPerson){
+  //   this.ContactPerson = ContactPerson.toUpperCase();
+  // }
 }

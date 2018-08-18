@@ -13,23 +13,49 @@ export class ViewMenusPage {
 
   resRef = firebase.database().ref("Restaurants/");
   restaurants : Array<any> =[];
+  restaurantsLoaded : Array<any> =[];
   menuRef = firebase.database().ref("Menus");
   menuItems : Array<any>=[];
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams) {
+    this.getRestaurants();
+  }
+
+
+  getRestaurants(){
     this.resRef.once('value',itemSnapshot=>{
-      this.restaurants=[];
+      let tempArray = [];
       itemSnapshot.forEach(itemSnap =>{
         var temp = itemSnap.val();
         temp.key = itemSnap.key;
-        this.restaurants.push(temp);
+        tempArray.push(temp);
         return false;
-      });
+      }) ;
+      this.restaurants = tempArray;
+      this.restaurantsLoaded = tempArray;
     });
-
   }
-
+  
+  initializeItems(): void {
+    this.restaurants = this.restaurantsLoaded;
+  }
+  getItems(searchbar) {
+    this.initializeItems();
+    let q = searchbar;
+    if (!q) {
+      return;
+    }
+    this.restaurants = this.restaurants.filter((v) => {
+      if(v.RestaurantName && q) {
+        if (v.RestaurantName.toLowerCase().indexOf(q.toLowerCase()) > -1) {
+          return true;
+        }
+        return false;
+      }
+    });
+  }
+  
   addToItems(resKey){
       this.menuRef.child(resKey).once('value',itemSnapshot=>{
       this.menuItems = [];

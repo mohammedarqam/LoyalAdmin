@@ -51,13 +51,13 @@ sendNoti(){
   this.resRef.child(this.restaurantsS[i]+"/Notifications/").push({
     Notification : this.Notification,
     NotificationDescription : this.NotificationDescription,
-    TimeStamp : moment().format()
+    TimeStamp : firebase.database.ServerValue.TIMESTAMP
   })
 }
 firebase.database().ref("Vendor Notifications").push({
   Notification : this.Notification,
   NotificationDescription : this.NotificationDescription,
-  TimeStamp : moment().format(),
+  TimeStamp : firebase.database.ServerValue.TIMESTAMP,
   SentTo : this.restaurantsS,
 })
 this.getNotifications();
@@ -71,12 +71,13 @@ this.addView= false;
 
 
 getNotifications(){
-  this.notiRef.once('value',itemSnapshot=>{
+  this.notiRef.orderByChild("TimeStamp").once('value',itemSnapshot=>{
     this.sentNotifications=[];
     itemSnapshot.forEach(itemSnap =>{
       var temp = itemSnap.val();
       temp.key = itemSnap.key;
       this.sentNotifications.push(temp);
+      this.sentNotifications.reverse();
       return false;
     });
   });
@@ -88,6 +89,7 @@ getNotifications(){
 clearAll(){
   this.restaurantsS = [];
   this.sall = false;
+  
 }
 selectAll(){
   if(this.sall){
@@ -117,5 +119,9 @@ showForm(){
 }
 hideForm(){
   this.addView = false;
+  this.restaurantsS = [];
+  this.sall = false;
+  this.Notification = null;
+  this.NotificationDescription = null;
 }
 }

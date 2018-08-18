@@ -35,7 +35,7 @@
       <ion-checkbox item-start (ionChange)="selectAll(sall)" [(ngModel)]="sall"></ion-checkbox>
       <button *ngIf="restaurantsS.length" ion-button item-end (click)="clearAll()" clear>Clear</button>
     </ion-item>
-  <button ion-button [disabled]="!Notification||!NotificationDescription||!restaurantsS"  color="danger" (click)="sendNoti()">Send</button>
+  <button ion-button [disabled]="!Notification||!NotificationDescription||!restaurantsS.length"  color="danger" (click)="sendNoti()">Send</button>
   </ion-card-content>
 </ion-card>
   
@@ -70,7 +70,8 @@
           {{noti.NotificationDescription}}
         </ion-col>
         <ion-col col-3>
-          {{noti.TimeStamp | date }}
+        <p>{{noti.TimeStamp | date:'d MMM yyyy' }}</p>
+        <p>{{noti.TimeStamp | date:'hh : mm : ss  aa' }}</p>
         </ion-col>
         <ion-col col-2>
           <button ion-button (click)="viewRestaurants(noti.SentTo)">View Restaurants</button>

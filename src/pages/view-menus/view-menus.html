@@ -7,10 +7,19 @@
   </ion-header>
   
   <ion-content padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4 >
     <ion-item no-lines class="content">
-      <h1 class="title">Menus</h1>
-      </ion-item>
-
+    <h1 class="title" item-start>Menus</h1>
+    </ion-item>
+    </ion-col>
+    <ion-col col-6 push-2 >
+    <ion-searchbar item-end animated="true" placeholder="Search a Restaurant" [(ngModel)]="searchBar" (ionInput)="getItems(searchBar)"></ion-searchbar>
+    </ion-col>
+    </ion-row>
+    </ion-grid>
+  
 
 <ion-grid>
   <ion-row>
