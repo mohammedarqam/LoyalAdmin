@@ -18,6 +18,7 @@ export class AddRestaurantsPage {
   Description : string = null;
   LoyalProfit : string;
   ProfitToLoyalPercentage : string="0";
+  VisitsL : string = "3";
 
   //Admin Variables
   adminPass :string;
@@ -112,6 +113,7 @@ export class AddRestaurantsPage {
           PhoneNo : this.PhoneNo,
           Email : this.Email,
           Password : this.Password,
+          MinimumVisits : this.VisitsL
     }).then(()=>{
               //Signing Restaurant Admin Out
               firebase.auth().signOut().then(()=>{
