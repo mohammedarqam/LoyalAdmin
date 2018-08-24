@@ -4,6 +4,17 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import * as firebase from 'firebase';
+import { AngularFireModule } from "angularfire2";
+import {AngularFireDatabaseModule} from 'angularfire2/database'; 
+
+export const firebaseConfig ={
+  apiKey: "AIzaSyAJcctpBmc663-f52DT8SZdO74dFiJk4m0",
+  authDomain: "loyalcodebro.firebaseapp.com",
+  databaseURL: "https://loyalcodebro.firebaseio.com",
+  projectId: "loyalcodebro",
+  storageBucket: "loyalcodebro.appspot.com",
+  messagingSenderId: "80615788011"
+}
 
 
 firebase.initializeApp({
@@ -23,6 +34,8 @@ firebase.initializeApp({
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

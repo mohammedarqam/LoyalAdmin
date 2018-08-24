@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController, ToastController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import moment from 'moment';
+import { Observable } from 'rxjs';
+import {AngularFireDatabase} from 'angularfire2/database'; 
 
 @IonicPage()
 @Component({
@@ -15,13 +17,17 @@ export class ViewRestaurantsPage {
   restaurantsLoaded : Array<any> =[];
 
 
+  restaurants$ : Observable<any>;
+
   constructor(
   public navCtrl: NavController, 
   public modalCtrl : ModalController,
   public toastCtrl : ToastController,
   public alertCtrl : AlertController,
+  public db : AngularFireDatabase,
   public navParams: NavParams) {
-    this.getRestaurants();
+    this.restaurants$ = this.db.list('Restaurants').snapshotChanges();
+    // this.getRestaurants();
   }
 
 

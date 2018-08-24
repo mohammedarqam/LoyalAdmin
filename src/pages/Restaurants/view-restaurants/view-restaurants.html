@@ -23,7 +23,7 @@
   <div *ngIf="restaurants.length">
     <ion-grid>
       <ion-row>
-        <ion-col col-4 *ngFor="let rest of restaurants">
+        <ion-col col-4 *ngFor="let rest of restaurants$ | async">
           <ion-card>
             <ion-card-content>
               <ion-item>
